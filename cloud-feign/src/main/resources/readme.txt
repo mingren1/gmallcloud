@@ -1,0 +1,1 @@
+如果您需要在RequestInterceptor`s you will need to either set the thread isolation strategy for Hystrix to `SEMAPHORE中使用ThreadLocal绑定变量或在Feign中禁用Hystrix。

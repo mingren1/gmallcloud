@@ -1,0 +1,24 @@
+# To disable Hystrix in Feign
+feign:
+  hystrix:
+    enabled: false
+
+# To set thread isolation to SEMAPHORE
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: myurl
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+#Feign日志记录仅响应DEBUG级别。
+logging.level.com.athome.gmall.cloudfeign.client.AppClient: DEBUG

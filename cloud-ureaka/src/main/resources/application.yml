@@ -1,0 +1,37 @@
+server:
+  enable-self-preservation: false
+spring:
+  application:
+    name: middle-registry
+---
+server:
+  port: ${eureka-node2.port}
+spring:
+  profiles: ${eureka-node2.profile}
+eureka:
+  instance:
+    hostname: ${eureka-node2.eureka-host-name}
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone:  ${eureka-node1-url},${eureka-node3-url},${eureka-node4-url}
+---
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2/eureka/
+
+---
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://peer1/eureka/

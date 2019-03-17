@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: myapplication
+eureka:
+  client:
+    service-url:
+      defaultZone: myzone
+  instance:
+    prefer-ip-address: true
+    instance-id:

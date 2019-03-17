@@ -1,0 +1,25 @@
+server:
+  port:8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          search-paths: middle*
+          username: ${git.config.username}
+          password: ${git.config.password}
+      label: master
+  application:
+    name: myname
+  profiles:
+    active: git
+eureka:
+  client:
+    service-url:
+      defaultZone: myzone
+  instance:
+    prefer-ip-address: true
+    instance-id: myid
+
+

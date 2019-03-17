@@ -1,0 +1,9 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka-url}
+    healthcheck:
+          enabled: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
